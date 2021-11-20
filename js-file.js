@@ -38,7 +38,9 @@ function displayAllBooks() {
 }
 
 const newBookBtn = document.querySelector("#new");
-//newBookBtn.addEventListener('click');
+newBookBtn.addEventListener("click", () => {
+    document.querySelector(".bookForm").style.display = "flex";
+});
 
 
 harryPotter = new Book("Harry Potter", "J.K. Rowling", 500, "read");
