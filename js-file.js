@@ -27,21 +27,27 @@ function addBookToLibrary(book) {
 function displayAllBooks() {
     while (tableBody.firstChild) tableBody.removeChild(tableBody.firstChild);
 
-    for (const book of myLibrary) {
+    for (let i = 0; i < myLibrary.length; i++) {
         let bookEntry = document.createElement('tr');
         let bookEntryTitle = document.createElement('td');
         let bookEntryAuthor = document.createElement('td');
         let bookEntryPages = document.createElement('td');
         let bookEntryRead = document.createElement('td');
-        bookEntryTitle.innerHTML = book.title;
-        bookEntryAuthor.innerHTML = book.author
-        bookEntryPages.innerHTML = book.pages;
-        bookEntryRead.innerHTML = book.read;
+        let bookRemove = document.createElement('button');
+        bookEntryTitle.innerHTML = myLibrary[i].title;
+        bookEntryAuthor.innerHTML = myLibrary[i].author
+        bookEntryPages.innerHTML = myLibrary[i].pages;
+        bookEntryRead.innerHTML = myLibrary[i].read;
+        bookRemove.innerHTML = "Remove";
+        bookRemove.classList.add('remove');
+        bookRemove.value = i;
         bookEntry.appendChild(bookEntryTitle);
         bookEntry.appendChild(bookEntryAuthor);
         bookEntry.appendChild(bookEntryPages);
         bookEntry.appendChild(bookEntryRead);
+        bookEntry.appendChild(bookRemove);
         tableBody.appendChild(bookEntry);
+        bookRemove.addEventListener("click", removeBookFromLibrary);
     }
 }
 
@@ -57,6 +63,11 @@ addBookButton.addEventListener("click", () => {
         displayAllBooks();
     });
 
+function removeBookFromLibrary(event) {
+    let bookIndex = event.target.value;
+    myLibrary.splice(bookIndex, 1);
+    displayAllBooks();
+}
 
 harryPotter = new Book("Harry Potter", "J.K. Rowling", 500, "read");
 gatsby = new Book("The Great Gatsby", "F. Scott Fitzgeral", 400, "read");
