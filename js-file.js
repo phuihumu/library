@@ -1,6 +1,7 @@
+let myLibrary = [];
+
 //Constructor for making "Book" objects
-function Book(title, author, pages, read)
-{
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -8,4 +9,8 @@ function Book(title, author, pages, read)
     this.info = function() {
         return (this.title + " by " + this.author + ", " + this.pages + " pages, " + this.read);
     }
+}
+
+function addBookToLibrary(book) {
+    myLibrary.push(book);
 }
