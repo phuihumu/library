@@ -33,20 +33,28 @@ function displayAllBooks() {
         let bookEntryAuthor = document.createElement('td');
         let bookEntryPages = document.createElement('td');
         let bookEntryRead = document.createElement('td');
+        let bookUpdateStatus = document.createElement('button');
         let bookRemove = document.createElement('button');
+
         bookEntryTitle.innerHTML = myLibrary[i].title;
         bookEntryAuthor.innerHTML = myLibrary[i].author
         bookEntryPages.innerHTML = myLibrary[i].pages;
         bookEntryRead.innerHTML = myLibrary[i].read;
+
+        bookUpdateStatus.innerHTML = "Update Read Status";
+        bookUpdateStatus.value = i;
         bookRemove.innerHTML = "Remove";
-        bookRemove.classList.add('remove');
         bookRemove.value = i;
+
         bookEntry.appendChild(bookEntryTitle);
         bookEntry.appendChild(bookEntryAuthor);
         bookEntry.appendChild(bookEntryPages);
         bookEntry.appendChild(bookEntryRead);
+        bookEntry.appendChild(bookUpdateStatus);
         bookEntry.appendChild(bookRemove);
         tableBody.appendChild(bookEntry);
+
+        bookUpdateStatus.addEventListener("click", updateReadStatus);
         bookRemove.addEventListener("click", removeBookFromLibrary);
     }
 }
@@ -66,6 +74,19 @@ addBookButton.addEventListener("click", () => {
 function removeBookFromLibrary(event) {
     let bookIndex = event.target.value;
     myLibrary.splice(bookIndex, 1);
+    displayAllBooks();
+}
+
+function updateReadStatus(event) {
+    let updateBook = event.target.value;
+    let currentRead = myLibrary[updateBook].read;
+    if (currentRead === "read")
+    {
+        myLibrary[updateBook].read = "not yet read";
+    }
+    else {
+        myLibrary[updateBook].read = "read";
+    }
     displayAllBooks();
 }
 
