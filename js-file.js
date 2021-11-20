@@ -1,5 +1,4 @@
 const container = document.querySelector('.container');
-const table = document.querySelector('table');
 const tableBody = document.querySelector('tbody');
 const bookForm = document.querySelector('.bookForm');
 const newBookTitle = document.querySelector('#title');
@@ -92,10 +91,6 @@ function updateReadStatus(event) {
 
 harryPotter = new Book("Harry Potter", "J.K. Rowling", 500, "read");
 gatsby = new Book("The Great Gatsby", "F. Scott Fitzgeral", 400, "read");
-//console.log(harryPotter.info());
 
 addBookToLibrary(harryPotter);
 addBookToLibrary(gatsby);
-console.log(myLibrary);
-
-//displayAllBooks();
