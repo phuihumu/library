@@ -35,8 +35,11 @@ function displayAllBooks() {
         table.appendChild(bookEntryPages);
         table.appendChild(bookEntryRead);
     }
-
 }
+
+const newBookBtn = document.querySelector("#new");
+//newBookBtn.addEventListener('click');
+
 
 harryPotter = new Book("Harry Potter", "J.K. Rowling", 500, "read");
 gatsby = new Book("The Great Gatsby", "F. Scott Fitzgeral", 400, "read");
