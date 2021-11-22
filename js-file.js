@@ -62,6 +62,13 @@ function displayAllBooks() {
 
 const newBookBtn = document.querySelector("#new");
 newBookBtn.addEventListener("click", () => {
+    //Clear the form when NEW BOOK button is clicked
+    newBookTitle.value = "";
+    newBookAuthor.value = "";
+    newBookPages.value = "";
+    newBookReadYes.checked = false;
+    newBookReadNo.checked = false;
+
     bookForm.style.display = "flex";
 });
 
