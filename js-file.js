@@ -4,9 +4,11 @@ const bookForm = document.querySelector('.bookForm');
 const newBookTitle = document.querySelector('#title');
 const newBookAuthor = document.querySelector('#author');
 const newBookPages = document.querySelector('#pages');
-const newBookRead = document.querySelector('#read');
+const newBookReadYes = document.querySelector('#readYes');
+const newBookReadNo = document.querySelector('#readNo');
 
 let myLibrary = [];
+let newBookRead;
 
 //Constructor for making "Book" objects
 function Book(title, author, pages, read) {
@@ -65,7 +67,13 @@ newBookBtn.addEventListener("click", () => {
 
 const addBookButton = document.querySelector("#add");
 addBookButton.addEventListener("click", () => {
-        addBookToLibrary(new Book(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookRead.value));
+        if (newBookReadYes.checked) {
+            newBookRead = "read";
+        }
+        else {
+            newBookRead = "not read yet";
+        }
+        addBookToLibrary(new Book(newBookTitle.value, newBookAuthor.value, newBookPages.value, newBookRead));
         bookForm.style.display = "none";
         displayAllBooks();
     });
@@ -94,3 +102,23 @@ gatsby = new Book("The Great Gatsby", "F. Scott Fitzgeral", 400, "read");
 
 addBookToLibrary(harryPotter);
 addBookToLibrary(gatsby);
+
+/*
+function setStyles() {
+    let currentLibrary = localStorage.getItem('library');
+    myLibrary = currentLibrary;
+}
+
+function populateStorage() {
+    localStorage.setItem('library', myLibrary);
+
+    setStyles();
+    displayAllBooks();
+}
+
+if (!localStorage.getItem('library')) {
+    populateStorage();
+}
+else {
+    setStyles();
+}*/
